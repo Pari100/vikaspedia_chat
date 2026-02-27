@@ -1,0 +1,178 @@
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+  border: none;
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.5), 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fabEntrance 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.fab__greeting {
+  position: fixed;
+  bottom: 95px;
+  right: 24px;
+  background: white;
+  color: #1976d2;
+  padding: 12px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-size: 15px;
+  font-weight: 600;
+  z-index: 999;
+  white-space: nowrap;
+  animation: greetingSlide 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+
+.fab__greeting::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+}
+
+.fab:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 28px rgba(25, 118, 210, 0.6), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fab:active {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.4);
+}
+
+.fab:focus {
+  outline: 3px solid rgba(25, 118, 210, 0.4);
+  outline-offset: 3px;
+}
+
+.fab--hidden {
+  animation: fabExit 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fabEntrance {
+  from {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes greetingSlide {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fabExit {
+  from {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.5), 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.8), 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(25, 118, 210, 0.2);
+  }
+}
+
+.fab:not(:hover) {
+  animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+  .fab {
+    width: 56px;
+    height: 56px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 22px;
+  }
+  
+  .fab__greeting {
+    bottom: 88px;
+    right: 20px;
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+
+.fab__robot {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.fab__antenna {
+  animation: antennaGlow 2s ease-in-out infinite;
+}
+
+.fab__eye {
+  animation: eyeBlink 4s ease-in-out infinite;
+}
+
+.fab:hover .fab__robot {
+  animation: robotFloat 0.8s ease-in-out;
+}
+
+@keyframes antennaGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes eyeBlink {
+  0%, 96%, 100% {
+    transform: scaleY(1);
+  }
+  98% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes robotFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
